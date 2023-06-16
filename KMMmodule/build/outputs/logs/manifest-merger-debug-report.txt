@@ -1,25 +1,25 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml:2:13-83
-INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml:2:13-83
-INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml:2:13-83
+ADDED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml:2:13-83
+INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml:2:13-83
+INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml:2:13-83
 	package
-		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
-		ADDED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml:2:13-83
-		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
+		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
+		ADDED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml:2:13-83
+		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
 	xmlns:android
-		ADDED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml:2:23-81
+		ADDED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml:2:23-81
 uses-sdk
-INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml reason: use-sdk injection requested
-INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
-INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
-INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
-INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
+INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml reason: use-sdk injection requested
+INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
+INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
+INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
+INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
 	android:targetSdkVersion
-		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
-		ADDED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
-		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
+		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
+		ADDED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
+		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
 	android:minSdkVersion
-		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
-		ADDED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
-		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest9648438066996747906.xml
+		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
+		ADDED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
+		INJECTED from /Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml

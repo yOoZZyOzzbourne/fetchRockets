@@ -1,11 +1,22 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     targetHierarchy.default()
+
+    multiplatformSwiftPackage {
+        packageName("KMMmodule")
+        swiftToolsVersion("5.3")
+        targetPlatforms {
+            iOS { v("13") }
+        }
+        outputDirectory(File(rootDir, "/"))
+    }
+
 
     android {
         compilations.all {
