@@ -29,6 +29,13 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 //put your multiplatform dependencies here
+                implementation("com.squareup.retrofit2:retrofit:2.9.0")
+                implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+                //implementation("com.squareup.okhttp3:okhttp:4.9.1")
+                // Add Koin dependency
+                //implementation("io.insert-koin:koin-core:3.1.2")
+                // Add Flow and flow import statements
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
             }
         }
         val commonTest by getting {
@@ -40,9 +47,10 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.fetchrockets"
+    namespace = "com.example.fetchRockets"
     compileSdk = 33
     defaultConfig {
         minSdk = 24
     }
+    buildToolsVersion = "33.0.1"
 }
