@@ -7,7 +7,6 @@ import kotlinx.serialization.json.*
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.*
 
-
 @Serializable
 data class RocketItem(
     @SerialName("rocket_id")
@@ -18,79 +17,47 @@ data class RocketItem(
     val rocketName: String? = null,
 )
 
-// To parse the JSON, install kotlin's serialization plugin and do:
-//
-// val json    = Json { allowStructuredMapKeys = true }
-// val welcome = json.parse(Welcome.serializer(), jsonString)
-
 @Serializable
-public data class Rocket (
+data class RocketKMM(
+    //@SerialName("rocket_id")
     val id: String,
+    //@SerialName("rocket_name")
     val name: String,
-    val height: Diameter,
-    val diameter: Diameter,
-    val mass: Mass,
-
+    @SerialName("description")
+    val overview: String,
+    val height: LineMeasure,
+    val diameter: LineMeasure,
+    val mass: WeightScale,
     @SerialName("first_stage")
-    val firstStage: FirstStage,
-
+    val firstStage: Stage,
     @SerialName("second_stage")
-    val secondStage: SecondStage,
-
-    val engines: Engines,
-
-    @SerialName("flickr_images")
-    val flickrImages: List<String>,
-
-    val type: String,
-    val stages: Long,
-
+    val secondStage: Stage,
     @SerialName("first_flight")
     val firstFlight: String,
+    @SerialName("flickr_images")
+    val photos: List<String>
+) {
+    @Serializable
+    data class LineMeasure(
+        val meters: Float,
+        val feet: Float
+    )
 
-    val description: String
-)
+    @Serializable
+    data class WeightScale(
+        @SerialName("kg")
+        val kilograms: Float,
+        @SerialName("lb")
+        val pounds: Float
+    )
 
-@Serializable
-public data class Diameter (
-    val meters: Float? = null,
-    val feet: Float? = null
-)
-
-@Serializable
-data class Engines (
-    val number: Long,
-    val type: String,
-)
-
-
-@Serializable
-data class FirstStage (
-    val reusable: Boolean,
-    val engines: Long,
-
-    @SerialName("fuel_amount_tons")
-    val fuelAmountTons: Double,
-
-    @SerialName("burn_time_sec")
-    val burnTimeSEC: Long? = null
-)
-
-
-@Serializable
-data class Mass (
-    val kg: Float,
-    val lb: Float
-)
-
-@Serializable
-data class SecondStage (
-    val reusable: Boolean,
-    val engines: Long,
-
-    @SerialName("fuel_amount_tons")
-    val fuelAmountTons: Float,
-
-    @SerialName("burn_time_sec")
-    val burnTimeSEC: Long? = null
-)
+    @Serializable
+    data class Stage(
+        val reusable: Boolean,
+        val engines: Int,
+        @SerialName("fuel_amount_tons")
+        val fuelMass: Float,
+        @SerialName("burn_time_sec")
+        val burnTime: Int?
+    )
+}

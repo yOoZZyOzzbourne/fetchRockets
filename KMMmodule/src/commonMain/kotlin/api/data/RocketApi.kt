@@ -7,16 +7,8 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
-import model.home.Rocket
+import model.home.RocketKMM
 
-//import io.ktor.client.features.json.*
-//import io.ktor.client.features.json.serializer.*
-
-//val client = HttpClient {
-//    install(JsonFeature) {
-//        serializer = KotlinxSerializer()
-//    }
-//}
 class RocketApi {
     private val client = HttpClient {
         install(ContentNegotiation) {
@@ -28,19 +20,11 @@ class RocketApi {
         }
     }
 
-    suspend fun fetchRockets(): List<Rocket> {
+    suspend fun fetchAllRockets(): List<RocketKMM> {
         return client.get("https://api.spacexdata.com/v4/rockets/").body()
     }
+
+    suspend fun fetchRocketById(rocketId: String): RocketKMM {
+        return client.get("https://api.spacexdata.com/v4/rockets/$rocketId").body()
+    }
 }
-
-
-
-
-//interface RocketApi {
-//
-//    suspend fun getRockets(): List<RocketItem>
-//
-//    //suspend fun getRocketInfo(
-//    //    @Path(value = "rocket_id") id: String
-//    //): RocketDetailsModel
-//}

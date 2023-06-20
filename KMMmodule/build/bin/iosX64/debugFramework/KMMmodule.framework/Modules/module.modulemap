@@ -1,0 +1,8 @@
+framework module KMMmodule {
+    umbrella header "KMMmodule.h"
+
+    export *
+    module * { export * }
+
+    use Foundation
+}
