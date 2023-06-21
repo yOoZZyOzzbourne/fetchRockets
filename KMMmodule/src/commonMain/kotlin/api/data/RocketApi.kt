@@ -27,4 +27,8 @@ class RocketApi {
     suspend fun fetchRocketById(rocketId: String): RocketKMM {
         return client.get("https://api.spacexdata.com/v4/rockets/$rocketId").body()
     }
+
+    fun foo(): String {
+        return "xd"
+    }
 }

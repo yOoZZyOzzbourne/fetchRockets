@@ -490,6 +490,7 @@ __attribute__((swift_name("RocketApi")))
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)fetchRocketByIdRocketId:(NSString *)rocketId completionHandler:(void (^)(KMMRocketKMM * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchRocketById(rocketId:completionHandler:)")));
+- (NSString *)foo __attribute__((swift_name("foo()")));
 @end
 
 __attribute__((objc_subclassing_restricted))
