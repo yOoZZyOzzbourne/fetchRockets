@@ -62,6 +62,10 @@ class RocketApi {
             }
         }
     }
+
+    fun foo(): String {
+        return "AAAAAAAAAA"
+    }
 }
 
 //    override suspend fun getRockets(): Data<List<RocketItem>> {
