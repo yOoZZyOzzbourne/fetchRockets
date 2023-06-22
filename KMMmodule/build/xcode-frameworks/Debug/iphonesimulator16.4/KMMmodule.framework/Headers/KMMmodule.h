@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class KMMKotlinUnit, KMMData<__covariant T>, KMMKotlinThrowable, KMMDataError, KMMKotlinNothing, KMMDataSuccess<__covariant T>, KMMDiameter, KMMFirstStage, KMMHeight, KMMMass, KMMSecondStage, KMMRocketDetailsModel, KMMDiameter_Companion, KMMDiameter_, KMMEnginesCompanion, KMMEngines, KMMFirstStage_Companion, KMMFirstStage_, KMMMass_Companion, KMMMass_, KMMSecondStage_, KMMRocketCompanion, KMMRocket, KMMRocketItemCompanion, KMMRocketItem, KMMSecondStage_Companion, KMMKotlinArray<T>, KMMKotlinException, KMMKotlinRuntimeException, KMMKotlinIllegalStateException, KMMKotlinx_serialization_coreSerializersModule, KMMKotlinx_serialization_coreSerialKind;
+@class KMMData<__covariant T>, KMMKotlinThrowable, KMMDataError, KMMKotlinNothing, KMMDataSuccess<__covariant T>, KMMRocketItemCompanion, KMMRocketItem, KMMRocketKMMLineMeasure, KMMRocketKMMWeightScale, KMMRocketKMMStage, KMMRocketKMMCompanion, KMMRocketKMM, KMMRocketKMMLineMeasureCompanion, KMMRocketKMMStageCompanion, KMMRocketKMMWeightScaleCompanion, KMMRocketException, KMMKotlinArray<T>, KMMKtor_httpHttpStatusCode, KMMRocketExceptionHttpError, KMMRocketExceptionNetworkError, KMMRocketExceptionUnknownError, KMMKotlinException, KMMKotlinRuntimeException, KMMKotlinIllegalStateException, KMMKtor_httpHttpStatusCodeCompanion, KMMKotlinx_serialization_coreSerializersModule, KMMKotlinx_serialization_coreSerialKind;
 
-@protocol KMMPlatform, KMMUseCase, KMMSynchronousUseCase, KMMRocketRepository, KMMKotlinx_serialization_coreKSerializer, KMMSuspendUseCase, KMMKotlinSuspendFunction0, KMMKotlinx_serialization_coreEncoder, KMMKotlinx_serialization_coreSerialDescriptor, KMMKotlinx_serialization_coreSerializationStrategy, KMMKotlinx_serialization_coreDecoder, KMMKotlinx_serialization_coreDeserializationStrategy, KMMKotlinFunction, KMMKotlinIterator, KMMKotlinx_serialization_coreCompositeEncoder, KMMKotlinAnnotation, KMMKotlinx_serialization_coreCompositeDecoder, KMMKotlinx_serialization_coreSerializersModuleCollector, KMMKotlinKClass, KMMKotlinKDeclarationContainer, KMMKotlinKAnnotatedElement, KMMKotlinKClassifier;
+@protocol KMMPlatform, KMMUseCase, KMMKotlinx_serialization_coreKSerializer, KMMSuspendUseCase, KMMSynchronousUseCase, KMMKotlinSuspendFunction0, KMMKotlinx_serialization_coreEncoder, KMMKotlinx_serialization_coreSerialDescriptor, KMMKotlinx_serialization_coreSerializationStrategy, KMMKotlinx_serialization_coreDecoder, KMMKotlinx_serialization_coreDeserializationStrategy, KMMKotlinIterator, KMMKotlinComparable, KMMKotlinFunction, KMMKotlinx_serialization_coreCompositeEncoder, KMMKotlinAnnotation, KMMKotlinx_serialization_coreCompositeDecoder, KMMKotlinx_serialization_coreSerializersModuleCollector, KMMKotlinKClass, KMMKotlinKDeclarationContainer, KMMKotlinKAnnotatedElement, KMMKotlinKClassifier;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -166,14 +166,6 @@ __attribute__((swift_name("IOSPlatform")))
 @property (readonly) NSString *name __attribute__((swift_name("name")));
 @end
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Random")))
-@interface KMMRandom : KMMBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (NSString *)foo __attribute__((swift_name("foo()")));
-@end
-
 __attribute__((swift_name("UseCase")))
 @protocol KMMUseCase
 @required
@@ -194,27 +186,6 @@ __attribute__((swift_name("SynchronousUseCase")))
 @protocol KMMSynchronousUseCase <KMMUseCase>
 @required
 - (id _Nullable)invokeInput:(id _Nullable)input __attribute__((swift_name("invoke(input:)")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("GetSelectedRocketIdUseCase")))
-@interface KMMGetSelectedRocketIdUseCase : KMMBase <KMMSynchronousUseCase>
-- (instancetype)initWithRepository:(id<KMMRocketRepository>)repository __attribute__((swift_name("init(repository:)"))) __attribute__((objc_designated_initializer));
-- (NSString *)invokeInput:(KMMKotlinUnit *)input __attribute__((swift_name("invoke(input:)")));
-@end
-
-__attribute__((swift_name("RocketRepository")))
-@protocol KMMRocketRepository
-@required
-@property NSString *selectedRocketId __attribute__((swift_name("selectedRocketId")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("MemoryRocketRepository")))
-@interface KMMMemoryRocketRepository : KMMBase <KMMRocketRepository>
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-@property NSString *selectedRocketId __attribute__((swift_name("selectedRocketId")));
 @end
 
 __attribute__((swift_name("Data")))
@@ -243,244 +214,6 @@ __attribute__((swift_name("DataSuccess")))
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) T _Nullable value __attribute__((swift_name("value")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Diameter")))
-@interface KMMDiameter : KMMBase
-- (instancetype)initWithFeet:(int32_t)feet meters:(double)meters __attribute__((swift_name("init(feet:meters:)"))) __attribute__((objc_designated_initializer));
-- (KMMDiameter *)doCopyFeet:(int32_t)feet meters:(double)meters __attribute__((swift_name("doCopy(feet:meters:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) int32_t feet __attribute__((swift_name("feet")));
-@property (readonly) double meters __attribute__((swift_name("meters")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("FirstStage")))
-@interface KMMFirstStage : KMMBase
-- (instancetype)initWithBurn_time_sec:(int32_t)burn_time_sec engines:(int32_t)engines fuel_amount_tons:(int32_t)fuel_amount_tons reusable:(BOOL)reusable __attribute__((swift_name("init(burn_time_sec:engines:fuel_amount_tons:reusable:)"))) __attribute__((objc_designated_initializer));
-- (KMMFirstStage *)doCopyBurn_time_sec:(int32_t)burn_time_sec engines:(int32_t)engines fuel_amount_tons:(int32_t)fuel_amount_tons reusable:(BOOL)reusable __attribute__((swift_name("doCopy(burn_time_sec:engines:fuel_amount_tons:reusable:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) int32_t burn_time_sec __attribute__((swift_name("burn_time_sec")));
-@property (readonly) int32_t engines __attribute__((swift_name("engines")));
-@property (readonly) int32_t fuel_amount_tons __attribute__((swift_name("fuel_amount_tons")));
-@property (readonly) BOOL reusable __attribute__((swift_name("reusable")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Height")))
-@interface KMMHeight : KMMBase
-- (instancetype)initWithFeet:(double)feet meters:(int32_t)meters __attribute__((swift_name("init(feet:meters:)"))) __attribute__((objc_designated_initializer));
-- (KMMHeight *)doCopyFeet:(double)feet meters:(int32_t)meters __attribute__((swift_name("doCopy(feet:meters:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) double feet __attribute__((swift_name("feet")));
-@property (readonly) int32_t meters __attribute__((swift_name("meters")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mass")))
-@interface KMMMass : KMMBase
-- (instancetype)initWithKg:(int32_t)kg lb:(int32_t)lb __attribute__((swift_name("init(kg:lb:)"))) __attribute__((objc_designated_initializer));
-- (KMMMass *)doCopyKg:(int32_t)kg lb:(int32_t)lb __attribute__((swift_name("doCopy(kg:lb:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) int32_t kg __attribute__((swift_name("kg")));
-@property (readonly) int32_t lb __attribute__((swift_name("lb")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("RocketDetailsModel")))
-@interface KMMRocketDetailsModel : KMMBase
-- (instancetype)initWithDescription:(NSString * _Nullable)description diameter:(KMMDiameter * _Nullable)diameter first_stage:(KMMFirstStage * _Nullable)first_stage height:(KMMHeight * _Nullable)height id:(int32_t)id mass:(KMMMass * _Nullable)mass rocket_id:(NSString * _Nullable)rocket_id rocket_name:(NSString * _Nullable)rocket_name rocket_type:(NSString * _Nullable)rocket_type second_stage:(KMMSecondStage * _Nullable)second_stage flickr_images:(NSArray<NSString *> *)flickr_images __attribute__((swift_name("init(description:diameter:first_stage:height:id:mass:rocket_id:rocket_name:rocket_type:second_stage:flickr_images:)"))) __attribute__((objc_designated_initializer));
-- (KMMRocketDetailsModel *)doCopyDescription:(NSString * _Nullable)description diameter:(KMMDiameter * _Nullable)diameter first_stage:(KMMFirstStage * _Nullable)first_stage height:(KMMHeight * _Nullable)height id:(int32_t)id mass:(KMMMass * _Nullable)mass rocket_id:(NSString * _Nullable)rocket_id rocket_name:(NSString * _Nullable)rocket_name rocket_type:(NSString * _Nullable)rocket_type second_stage:(KMMSecondStage * _Nullable)second_stage flickr_images:(NSArray<NSString *> *)flickr_images __attribute__((swift_name("doCopy(description:diameter:first_stage:height:id:mass:rocket_id:rocket_name:rocket_type:second_stage:flickr_images:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString * _Nullable description_ __attribute__((swift_name("description_")));
-@property (readonly) KMMDiameter * _Nullable diameter __attribute__((swift_name("diameter")));
-@property (readonly) KMMFirstStage * _Nullable first_stage __attribute__((swift_name("first_stage")));
-@property (readonly) NSArray<NSString *> *flickr_images __attribute__((swift_name("flickr_images")));
-@property (readonly) KMMHeight * _Nullable height __attribute__((swift_name("height")));
-@property (readonly) int32_t id __attribute__((swift_name("id")));
-@property (readonly) KMMMass * _Nullable mass __attribute__((swift_name("mass")));
-@property (readonly) NSString * _Nullable rocket_id __attribute__((swift_name("rocket_id")));
-@property (readonly) NSString * _Nullable rocket_name __attribute__((swift_name("rocket_name")));
-@property (readonly) NSString * _Nullable rocket_type __attribute__((swift_name("rocket_type")));
-@property (readonly) KMMSecondStage * _Nullable second_stage __attribute__((swift_name("second_stage")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("SecondStage")))
-@interface KMMSecondStage : KMMBase
-- (instancetype)initWithBurn_time_sec:(int32_t)burn_time_sec engines:(int32_t)engines fuel_amount_tons:(int32_t)fuel_amount_tons reusable:(BOOL)reusable __attribute__((swift_name("init(burn_time_sec:engines:fuel_amount_tons:reusable:)"))) __attribute__((objc_designated_initializer));
-- (KMMSecondStage *)doCopyBurn_time_sec:(int32_t)burn_time_sec engines:(int32_t)engines fuel_amount_tons:(int32_t)fuel_amount_tons reusable:(BOOL)reusable __attribute__((swift_name("doCopy(burn_time_sec:engines:fuel_amount_tons:reusable:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) int32_t burn_time_sec __attribute__((swift_name("burn_time_sec")));
-@property (readonly) int32_t engines __attribute__((swift_name("engines")));
-@property (readonly) int32_t fuel_amount_tons __attribute__((swift_name("fuel_amount_tons")));
-@property (readonly) BOOL reusable __attribute__((swift_name("reusable")));
-@end
-
-
-/**
- * @note annotations
- *   kotlinx.serialization.Serializable
-*/
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Diameter_")))
-@interface KMMDiameter_ : KMMBase
-- (instancetype)initWithMeters:(KMMFloat * _Nullable)meters feet:(KMMFloat * _Nullable)feet __attribute__((swift_name("init(meters:feet:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) KMMDiameter_Companion *companion __attribute__((swift_name("companion")));
-- (KMMDiameter_ *)doCopyMeters:(KMMFloat * _Nullable)meters feet:(KMMFloat * _Nullable)feet __attribute__((swift_name("doCopy(meters:feet:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) KMMFloat * _Nullable feet __attribute__((swift_name("feet")));
-@property (readonly) KMMFloat * _Nullable meters __attribute__((swift_name("meters")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Diameter_.Companion")))
-@interface KMMDiameter_Companion : KMMBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) KMMDiameter_Companion *shared __attribute__((swift_name("shared")));
-- (id<KMMKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
-@end
-
-
-/**
- * @note annotations
- *   kotlinx.serialization.Serializable
-*/
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Engines")))
-@interface KMMEngines : KMMBase
-- (instancetype)initWithNumber:(int64_t)number type:(NSString *)type __attribute__((swift_name("init(number:type:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) KMMEnginesCompanion *companion __attribute__((swift_name("companion")));
-- (KMMEngines *)doCopyNumber:(int64_t)number type:(NSString *)type __attribute__((swift_name("doCopy(number:type:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) int64_t number __attribute__((swift_name("number")));
-@property (readonly) NSString *type __attribute__((swift_name("type")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Engines.Companion")))
-@interface KMMEnginesCompanion : KMMBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) KMMEnginesCompanion *shared __attribute__((swift_name("shared")));
-- (id<KMMKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
-@end
-
-
-/**
- * @note annotations
- *   kotlinx.serialization.Serializable
-*/
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("FirstStage_")))
-@interface KMMFirstStage_ : KMMBase
-- (instancetype)initWithReusable:(BOOL)reusable engines:(int64_t)engines fuelAmountTons:(double)fuelAmountTons burnTimeSEC:(KMMLong * _Nullable)burnTimeSEC __attribute__((swift_name("init(reusable:engines:fuelAmountTons:burnTimeSEC:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) KMMFirstStage_Companion *companion __attribute__((swift_name("companion")));
-- (KMMFirstStage_ *)doCopyReusable:(BOOL)reusable engines:(int64_t)engines fuelAmountTons:(double)fuelAmountTons burnTimeSEC:(KMMLong * _Nullable)burnTimeSEC __attribute__((swift_name("doCopy(reusable:engines:fuelAmountTons:burnTimeSEC:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) KMMLong * _Nullable burnTimeSEC __attribute__((swift_name("burnTimeSEC")));
-@property (readonly) int64_t engines __attribute__((swift_name("engines")));
-@property (readonly) double fuelAmountTons __attribute__((swift_name("fuelAmountTons")));
-@property (readonly) BOOL reusable __attribute__((swift_name("reusable")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("FirstStage_.Companion")))
-@interface KMMFirstStage_Companion : KMMBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) KMMFirstStage_Companion *shared __attribute__((swift_name("shared")));
-- (id<KMMKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
-@end
-
-
-/**
- * @note annotations
- *   kotlinx.serialization.Serializable
-*/
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mass_")))
-@interface KMMMass_ : KMMBase
-- (instancetype)initWithKg:(float)kg lb:(float)lb __attribute__((swift_name("init(kg:lb:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) KMMMass_Companion *companion __attribute__((swift_name("companion")));
-- (KMMMass_ *)doCopyKg:(float)kg lb:(float)lb __attribute__((swift_name("doCopy(kg:lb:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) float kg __attribute__((swift_name("kg")));
-@property (readonly) float lb __attribute__((swift_name("lb")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mass_.Companion")))
-@interface KMMMass_Companion : KMMBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) KMMMass_Companion *shared __attribute__((swift_name("shared")));
-- (id<KMMKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
-@end
-
-
-/**
- * @note annotations
- *   kotlinx.serialization.Serializable
-*/
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Rocket")))
-@interface KMMRocket : KMMBase
-- (instancetype)initWithId:(NSString *)id name:(NSString *)name height:(KMMDiameter_ *)height diameter:(KMMDiameter_ *)diameter mass:(KMMMass_ *)mass firstStage:(KMMFirstStage_ *)firstStage secondStage:(KMMSecondStage_ *)secondStage engines:(KMMEngines *)engines flickrImages:(NSArray<NSString *> *)flickrImages type:(NSString *)type stages:(int64_t)stages firstFlight:(NSString *)firstFlight description:(NSString *)description __attribute__((swift_name("init(id:name:height:diameter:mass:firstStage:secondStage:engines:flickrImages:type:stages:firstFlight:description:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) KMMRocketCompanion *companion __attribute__((swift_name("companion")));
-- (KMMRocket *)doCopyId:(NSString *)id name:(NSString *)name height:(KMMDiameter_ *)height diameter:(KMMDiameter_ *)diameter mass:(KMMMass_ *)mass firstStage:(KMMFirstStage_ *)firstStage secondStage:(KMMSecondStage_ *)secondStage engines:(KMMEngines *)engines flickrImages:(NSArray<NSString *> *)flickrImages type:(NSString *)type stages:(int64_t)stages firstFlight:(NSString *)firstFlight description:(NSString *)description __attribute__((swift_name("doCopy(id:name:height:diameter:mass:firstStage:secondStage:engines:flickrImages:type:stages:firstFlight:description:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString *description_ __attribute__((swift_name("description_")));
-@property (readonly) KMMDiameter_ *diameter __attribute__((swift_name("diameter")));
-@property (readonly) KMMEngines *engines __attribute__((swift_name("engines")));
-@property (readonly) NSString *firstFlight __attribute__((swift_name("firstFlight")));
-@property (readonly) KMMFirstStage_ *firstStage __attribute__((swift_name("firstStage")));
-@property (readonly) NSArray<NSString *> *flickrImages __attribute__((swift_name("flickrImages")));
-@property (readonly) KMMDiameter_ *height __attribute__((swift_name("height")));
-@property (readonly) NSString *id __attribute__((swift_name("id")));
-@property (readonly) KMMMass_ *mass __attribute__((swift_name("mass")));
-@property (readonly) NSString *name __attribute__((swift_name("name")));
-@property (readonly) KMMSecondStage_ *secondStage __attribute__((swift_name("secondStage")));
-@property (readonly) int64_t stages __attribute__((swift_name("stages")));
-@property (readonly) NSString *type __attribute__((swift_name("type")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Rocket.Companion")))
-@interface KMMRocketCompanion : KMMBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) KMMRocketCompanion *shared __attribute__((swift_name("shared")));
-- (id<KMMKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
 
@@ -518,27 +251,119 @@ __attribute__((swift_name("RocketItem.Companion")))
  *   kotlinx.serialization.Serializable
 */
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("SecondStage_")))
-@interface KMMSecondStage_ : KMMBase
-- (instancetype)initWithReusable:(BOOL)reusable engines:(int64_t)engines fuelAmountTons:(float)fuelAmountTons burnTimeSEC:(KMMLong * _Nullable)burnTimeSEC __attribute__((swift_name("init(reusable:engines:fuelAmountTons:burnTimeSEC:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) KMMSecondStage_Companion *companion __attribute__((swift_name("companion")));
-- (KMMSecondStage_ *)doCopyReusable:(BOOL)reusable engines:(int64_t)engines fuelAmountTons:(float)fuelAmountTons burnTimeSEC:(KMMLong * _Nullable)burnTimeSEC __attribute__((swift_name("doCopy(reusable:engines:fuelAmountTons:burnTimeSEC:)")));
+__attribute__((swift_name("RocketKMM")))
+@interface KMMRocketKMM : KMMBase
+- (instancetype)initWithId:(NSString *)id name:(NSString *)name overview:(NSString *)overview height:(KMMRocketKMMLineMeasure *)height diameter:(KMMRocketKMMLineMeasure *)diameter mass:(KMMRocketKMMWeightScale *)mass firstStage:(KMMRocketKMMStage *)firstStage secondStage:(KMMRocketKMMStage *)secondStage firstFlight:(NSString *)firstFlight photos:(NSArray<NSString *> *)photos __attribute__((swift_name("init(id:name:overview:height:diameter:mass:firstStage:secondStage:firstFlight:photos:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) KMMRocketKMMCompanion *companion __attribute__((swift_name("companion")));
+- (KMMRocketKMM *)doCopyId:(NSString *)id name:(NSString *)name overview:(NSString *)overview height:(KMMRocketKMMLineMeasure *)height diameter:(KMMRocketKMMLineMeasure *)diameter mass:(KMMRocketKMMWeightScale *)mass firstStage:(KMMRocketKMMStage *)firstStage secondStage:(KMMRocketKMMStage *)secondStage firstFlight:(NSString *)firstFlight photos:(NSArray<NSString *> *)photos __attribute__((swift_name("doCopy(id:name:overview:height:diameter:mass:firstStage:secondStage:firstFlight:photos:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) KMMLong * _Nullable burnTimeSEC __attribute__((swift_name("burnTimeSEC")));
-@property (readonly) int64_t engines __attribute__((swift_name("engines")));
-@property (readonly) float fuelAmountTons __attribute__((swift_name("fuelAmountTons")));
+@property (readonly) KMMRocketKMMLineMeasure *diameter __attribute__((swift_name("diameter")));
+@property (readonly) NSString *firstFlight __attribute__((swift_name("firstFlight")));
+@property (readonly) KMMRocketKMMStage *firstStage __attribute__((swift_name("firstStage")));
+@property (readonly) KMMRocketKMMLineMeasure *height __attribute__((swift_name("height")));
+@property (readonly) NSString *id __attribute__((swift_name("id")));
+@property (readonly) KMMRocketKMMWeightScale *mass __attribute__((swift_name("mass")));
+@property (readonly) NSString *name __attribute__((swift_name("name")));
+@property (readonly) NSString *overview __attribute__((swift_name("overview")));
+@property (readonly) NSArray<NSString *> *photos __attribute__((swift_name("photos")));
+@property (readonly) KMMRocketKMMStage *secondStage __attribute__((swift_name("secondStage")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketKMM.Companion")))
+@interface KMMRocketKMMCompanion : KMMBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) KMMRocketKMMCompanion *shared __attribute__((swift_name("shared")));
+- (id<KMMKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Serializable
+*/
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketKMM.LineMeasure")))
+@interface KMMRocketKMMLineMeasure : KMMBase
+- (instancetype)initWithMeters:(float)meters feet:(float)feet __attribute__((swift_name("init(meters:feet:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) KMMRocketKMMLineMeasureCompanion *companion __attribute__((swift_name("companion")));
+- (KMMRocketKMMLineMeasure *)doCopyMeters:(float)meters feet:(float)feet __attribute__((swift_name("doCopy(meters:feet:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) float feet __attribute__((swift_name("feet")));
+@property (readonly) float meters __attribute__((swift_name("meters")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketKMM.LineMeasureCompanion")))
+@interface KMMRocketKMMLineMeasureCompanion : KMMBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) KMMRocketKMMLineMeasureCompanion *shared __attribute__((swift_name("shared")));
+- (id<KMMKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Serializable
+*/
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketKMM.Stage")))
+@interface KMMRocketKMMStage : KMMBase
+- (instancetype)initWithReusable:(BOOL)reusable engines:(int32_t)engines fuelMass:(float)fuelMass burnTime:(KMMInt * _Nullable)burnTime __attribute__((swift_name("init(reusable:engines:fuelMass:burnTime:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) KMMRocketKMMStageCompanion *companion __attribute__((swift_name("companion")));
+- (KMMRocketKMMStage *)doCopyReusable:(BOOL)reusable engines:(int32_t)engines fuelMass:(float)fuelMass burnTime:(KMMInt * _Nullable)burnTime __attribute__((swift_name("doCopy(reusable:engines:fuelMass:burnTime:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) KMMInt * _Nullable burnTime __attribute__((swift_name("burnTime")));
+@property (readonly) int32_t engines __attribute__((swift_name("engines")));
+@property (readonly) float fuelMass __attribute__((swift_name("fuelMass")));
 @property (readonly) BOOL reusable __attribute__((swift_name("reusable")));
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("SecondStage_.Companion")))
-@interface KMMSecondStage_Companion : KMMBase
+__attribute__((swift_name("RocketKMM.StageCompanion")))
+@interface KMMRocketKMMStageCompanion : KMMBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) KMMSecondStage_Companion *shared __attribute__((swift_name("shared")));
+@property (class, readonly, getter=shared) KMMRocketKMMStageCompanion *shared __attribute__((swift_name("shared")));
+- (id<KMMKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Serializable
+*/
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketKMM.WeightScale")))
+@interface KMMRocketKMMWeightScale : KMMBase
+- (instancetype)initWithKilograms:(float)kilograms pounds:(float)pounds __attribute__((swift_name("init(kilograms:pounds:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) KMMRocketKMMWeightScaleCompanion *companion __attribute__((swift_name("companion")));
+- (KMMRocketKMMWeightScale *)doCopyKilograms:(float)kilograms pounds:(float)pounds __attribute__((swift_name("doCopy(kilograms:pounds:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) float kilograms __attribute__((swift_name("kilograms")));
+@property (readonly) float pounds __attribute__((swift_name("pounds")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketKMM.WeightScaleCompanion")))
+@interface KMMRocketKMMWeightScaleCompanion : KMMBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) KMMRocketKMMWeightScaleCompanion *shared __attribute__((swift_name("shared")));
 - (id<KMMKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
@@ -549,10 +374,76 @@ __attribute__((swift_name("RocketApi")))
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 
 /**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
-- (void)fetchRocketsWithCompletionHandler:(void (^)(NSArray<KMMRocket *> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchRockets(completionHandler:)")));
+- (void)fetchAllRocketsWithCompletionHandler:(void (^)(NSArray<KMMRocketKMM *> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchAllRockets(completionHandler:)")));
+
+/**
+ * @note This method converts all Kotlin exceptions to errors.
+*/
+- (void)fetchRocketByIdRocketId:(NSString *)rocketId completionHandler:(void (^)(KMMRocketKMM * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchRocketById(rocketId:completionHandler:)")));
+
+/**
+ * @note This method converts all Kotlin exceptions to errors.
+*/
+- (void)fetchRocketsSuccess:(void (^)(NSArray<KMMRocketKMM *> *))success failure:(void (^)(KMMRocketException *))failure completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("fetchRockets(success:failure:completionHandler:)")));
+@end
+
+__attribute__((swift_name("KotlinThrowable")))
+@interface KMMKotlinThrowable : KMMBase
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(KMMKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(KMMKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+- (KMMKotlinArray<NSString *> *)getStackTrace __attribute__((swift_name("getStackTrace()")));
+- (void)printStackTrace __attribute__((swift_name("printStackTrace()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) KMMKotlinThrowable * _Nullable cause __attribute__((swift_name("cause")));
+@property (readonly) NSString * _Nullable message __attribute__((swift_name("message")));
+- (NSError *)asError __attribute__((swift_name("asError()")));
+@end
+
+__attribute__((swift_name("RocketException")))
+@interface KMMRocketException : KMMKotlinThrowable
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithCause:(KMMKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
++ (instancetype)new __attribute__((unavailable));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(KMMKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketException.HttpError")))
+@interface KMMRocketExceptionHttpError : KMMRocketException
+- (instancetype)initWithStatusCode:(KMMKtor_httpHttpStatusCode *)statusCode __attribute__((swift_name("init(statusCode:)"))) __attribute__((objc_designated_initializer));
+- (KMMRocketExceptionHttpError *)doCopyStatusCode:(KMMKtor_httpHttpStatusCode *)statusCode __attribute__((swift_name("doCopy(statusCode:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) KMMKtor_httpHttpStatusCode *statusCode __attribute__((swift_name("statusCode")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketException.NetworkError")))
+@interface KMMRocketExceptionNetworkError : KMMRocketException
+- (instancetype)initWithErrorMessage:(NSString *)errorMessage __attribute__((swift_name("init(errorMessage:)"))) __attribute__((objc_designated_initializer));
+- (KMMRocketExceptionNetworkError *)doCopyErrorMessage:(NSString *)errorMessage __attribute__((swift_name("doCopy(errorMessage:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *errorMessage __attribute__((swift_name("errorMessage")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketException.UnknownError")))
+@interface KMMRocketExceptionUnknownError : KMMRocketException
+- (instancetype)initWithErrorMessage:(NSString *)errorMessage __attribute__((swift_name("init(errorMessage:)"))) __attribute__((objc_designated_initializer));
+- (KMMRocketExceptionUnknownError *)doCopyErrorMessage:(NSString *)errorMessage __attribute__((swift_name("doCopy(errorMessage:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *errorMessage __attribute__((swift_name("errorMessage")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -582,21 +473,6 @@ __attribute__((swift_name("DataExtensionsKt")))
  * Other uncaught Kotlin exceptions are fatal.
 */
 + (void)safeCallBlock:(id<KMMKotlinSuspendFunction0>)block completionHandler:(void (^)(KMMData<id> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("safeCall(block:completionHandler:)")));
-@end
-
-__attribute__((swift_name("KotlinThrowable")))
-@interface KMMKotlinThrowable : KMMBase
-- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithCause:(KMMKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(KMMKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
-- (KMMKotlinArray<NSString *> *)getStackTrace __attribute__((swift_name("getStackTrace()")));
-- (void)printStackTrace __attribute__((swift_name("printStackTrace()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) KMMKotlinThrowable * _Nullable cause __attribute__((swift_name("cause")));
-@property (readonly) NSString * _Nullable message __attribute__((swift_name("message")));
-- (NSError *)asError __attribute__((swift_name("asError()")));
 @end
 
 __attribute__((swift_name("KotlinException")))
@@ -641,16 +517,6 @@ __attribute__((swift_name("KotlinCancellationException")))
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("KotlinUnit")))
-@interface KMMKotlinUnit : KMMBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)unit __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) KMMKotlinUnit *shared __attribute__((swift_name("shared")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@end
-
-__attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KotlinNothing")))
 @interface KMMKotlinNothing : KMMBase
 @end
@@ -674,6 +540,39 @@ __attribute__((swift_name("Kotlinx_serialization_coreKSerializer")))
 @required
 @end
 
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinArray")))
+@interface KMMKotlinArray<T> : KMMBase
++ (instancetype)arrayWithSize:(int32_t)size init:(T _Nullable (^)(KMMInt *))init __attribute__((swift_name("init(size:init:)")));
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (T _Nullable)getIndex:(int32_t)index __attribute__((swift_name("get(index:)")));
+- (id<KMMKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
+- (void)setIndex:(int32_t)index value:(T _Nullable)value __attribute__((swift_name("set(index:value:)")));
+@property (readonly) int32_t size __attribute__((swift_name("size")));
+@end
+
+__attribute__((swift_name("KotlinComparable")))
+@protocol KMMKotlinComparable
+@required
+- (int32_t)compareToOther:(id _Nullable)other __attribute__((swift_name("compareTo(other:)")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_httpHttpStatusCode")))
+@interface KMMKtor_httpHttpStatusCode : KMMBase <KMMKotlinComparable>
+- (instancetype)initWithValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("init(value:description:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) KMMKtor_httpHttpStatusCodeCompanion *companion __attribute__((swift_name("companion")));
+- (int32_t)compareToOther:(KMMKtor_httpHttpStatusCode *)other __attribute__((swift_name("compareTo(other:)")));
+- (KMMKtor_httpHttpStatusCode *)doCopyValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("doCopy(value:description:)")));
+- (KMMKtor_httpHttpStatusCode *)descriptionValue:(NSString *)value __attribute__((swift_name("description(value:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *description_ __attribute__((swift_name("description_")));
+@property (readonly) int32_t value __attribute__((swift_name("value")));
+@end
+
 __attribute__((swift_name("KotlinFunction")))
 @protocol KMMKotlinFunction
 @required
@@ -688,18 +587,6 @@ __attribute__((swift_name("KotlinSuspendFunction0")))
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)invokeWithCompletionHandler:(void (^)(id _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("invoke(completionHandler:)")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("KotlinArray")))
-@interface KMMKotlinArray<T> : KMMBase
-+ (instancetype)arrayWithSize:(int32_t)size init:(T _Nullable (^)(KMMInt *))init __attribute__((swift_name("init(size:init:)")));
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-- (T _Nullable)getIndex:(int32_t)index __attribute__((swift_name("get(index:)")));
-- (id<KMMKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
-- (void)setIndex:(int32_t)index value:(T _Nullable)value __attribute__((swift_name("set(index:value:)")));
-@property (readonly) int32_t size __attribute__((swift_name("size")));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
@@ -848,6 +735,70 @@ __attribute__((swift_name("KotlinIterator")))
 @required
 - (BOOL)hasNext __attribute__((swift_name("hasNext()")));
 - (id _Nullable)next __attribute__((swift_name("next()")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
+@interface KMMKtor_httpHttpStatusCodeCompanion : KMMBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) KMMKtor_httpHttpStatusCodeCompanion *shared __attribute__((swift_name("shared")));
+- (KMMKtor_httpHttpStatusCode *)fromValueValue:(int32_t)value __attribute__((swift_name("fromValue(value:)")));
+@property (readonly) KMMKtor_httpHttpStatusCode *Accepted __attribute__((swift_name("Accepted")));
+@property (readonly) KMMKtor_httpHttpStatusCode *BadGateway __attribute__((swift_name("BadGateway")));
+@property (readonly) KMMKtor_httpHttpStatusCode *BadRequest __attribute__((swift_name("BadRequest")));
+@property (readonly) KMMKtor_httpHttpStatusCode *Conflict __attribute__((swift_name("Conflict")));
+@property (readonly) KMMKtor_httpHttpStatusCode *Continue __attribute__((swift_name("Continue")));
+@property (readonly) KMMKtor_httpHttpStatusCode *Created __attribute__((swift_name("Created")));
+@property (readonly) KMMKtor_httpHttpStatusCode *ExpectationFailed __attribute__((swift_name("ExpectationFailed")));
+@property (readonly) KMMKtor_httpHttpStatusCode *FailedDependency __attribute__((swift_name("FailedDependency")));
+@property (readonly) KMMKtor_httpHttpStatusCode *Forbidden __attribute__((swift_name("Forbidden")));
+@property (readonly) KMMKtor_httpHttpStatusCode *Found __attribute__((swift_name("Found")));
+@property (readonly) KMMKtor_httpHttpStatusCode *GatewayTimeout __attribute__((swift_name("GatewayTimeout")));
+@property (readonly) KMMKtor_httpHttpStatusCode *Gone __attribute__((swift_name("Gone")));
+@property (readonly) KMMKtor_httpHttpStatusCode *InsufficientStorage __attribute__((swift_name("InsufficientStorage")));
+@property (readonly) KMMKtor_httpHttpStatusCode *InternalServerError __attribute__((swift_name("InternalServerError")));
+@property (readonly) KMMKtor_httpHttpStatusCode *LengthRequired __attribute__((swift_name("LengthRequired")));
+@property (readonly) KMMKtor_httpHttpStatusCode *Locked __attribute__((swift_name("Locked")));
+@property (readonly) KMMKtor_httpHttpStatusCode *MethodNotAllowed __attribute__((swift_name("MethodNotAllowed")));
+@property (readonly) KMMKtor_httpHttpStatusCode *MovedPermanently __attribute__((swift_name("MovedPermanently")));
+@property (readonly) KMMKtor_httpHttpStatusCode *MultiStatus __attribute__((swift_name("MultiStatus")));
+@property (readonly) KMMKtor_httpHttpStatusCode *MultipleChoices __attribute__((swift_name("MultipleChoices")));
+@property (readonly) KMMKtor_httpHttpStatusCode *NoContent __attribute__((swift_name("NoContent")));
+@property (readonly) KMMKtor_httpHttpStatusCode *NonAuthoritativeInformation __attribute__((swift_name("NonAuthoritativeInformation")));
+@property (readonly) KMMKtor_httpHttpStatusCode *NotAcceptable __attribute__((swift_name("NotAcceptable")));
+@property (readonly) KMMKtor_httpHttpStatusCode *NotFound __attribute__((swift_name("NotFound")));
+@property (readonly) KMMKtor_httpHttpStatusCode *NotImplemented __attribute__((swift_name("NotImplemented")));
+@property (readonly) KMMKtor_httpHttpStatusCode *NotModified __attribute__((swift_name("NotModified")));
+@property (readonly) KMMKtor_httpHttpStatusCode *OK __attribute__((swift_name("OK")));
+@property (readonly) KMMKtor_httpHttpStatusCode *PartialContent __attribute__((swift_name("PartialContent")));
+@property (readonly) KMMKtor_httpHttpStatusCode *PayloadTooLarge __attribute__((swift_name("PayloadTooLarge")));
+@property (readonly) KMMKtor_httpHttpStatusCode *PaymentRequired __attribute__((swift_name("PaymentRequired")));
+@property (readonly) KMMKtor_httpHttpStatusCode *PermanentRedirect __attribute__((swift_name("PermanentRedirect")));
+@property (readonly) KMMKtor_httpHttpStatusCode *PreconditionFailed __attribute__((swift_name("PreconditionFailed")));
+@property (readonly) KMMKtor_httpHttpStatusCode *Processing __attribute__((swift_name("Processing")));
+@property (readonly) KMMKtor_httpHttpStatusCode *ProxyAuthenticationRequired __attribute__((swift_name("ProxyAuthenticationRequired")));
+@property (readonly) KMMKtor_httpHttpStatusCode *RequestHeaderFieldTooLarge __attribute__((swift_name("RequestHeaderFieldTooLarge")));
+@property (readonly) KMMKtor_httpHttpStatusCode *RequestTimeout __attribute__((swift_name("RequestTimeout")));
+@property (readonly) KMMKtor_httpHttpStatusCode *RequestURITooLong __attribute__((swift_name("RequestURITooLong")));
+@property (readonly) KMMKtor_httpHttpStatusCode *RequestedRangeNotSatisfiable __attribute__((swift_name("RequestedRangeNotSatisfiable")));
+@property (readonly) KMMKtor_httpHttpStatusCode *ResetContent __attribute__((swift_name("ResetContent")));
+@property (readonly) KMMKtor_httpHttpStatusCode *SeeOther __attribute__((swift_name("SeeOther")));
+@property (readonly) KMMKtor_httpHttpStatusCode *ServiceUnavailable __attribute__((swift_name("ServiceUnavailable")));
+@property (readonly) KMMKtor_httpHttpStatusCode *SwitchProxy __attribute__((swift_name("SwitchProxy")));
+@property (readonly) KMMKtor_httpHttpStatusCode *SwitchingProtocols __attribute__((swift_name("SwitchingProtocols")));
+@property (readonly) KMMKtor_httpHttpStatusCode *TemporaryRedirect __attribute__((swift_name("TemporaryRedirect")));
+@property (readonly) KMMKtor_httpHttpStatusCode *TooEarly __attribute__((swift_name("TooEarly")));
+@property (readonly) KMMKtor_httpHttpStatusCode *TooManyRequests __attribute__((swift_name("TooManyRequests")));
+@property (readonly) KMMKtor_httpHttpStatusCode *Unauthorized __attribute__((swift_name("Unauthorized")));
+@property (readonly) KMMKtor_httpHttpStatusCode *UnprocessableEntity __attribute__((swift_name("UnprocessableEntity")));
+@property (readonly) KMMKtor_httpHttpStatusCode *UnsupportedMediaType __attribute__((swift_name("UnsupportedMediaType")));
+@property (readonly) KMMKtor_httpHttpStatusCode *UpgradeRequired __attribute__((swift_name("UpgradeRequired")));
+@property (readonly) KMMKtor_httpHttpStatusCode *UseProxy __attribute__((swift_name("UseProxy")));
+@property (readonly) KMMKtor_httpHttpStatusCode *VariantAlsoNegotiates __attribute__((swift_name("VariantAlsoNegotiates")));
+@property (readonly) KMMKtor_httpHttpStatusCode *VersionNotSupported __attribute__((swift_name("VersionNotSupported")));
+@property (readonly) NSArray<KMMKtor_httpHttpStatusCode *> *allStatusCodes __attribute__((swift_name("allStatusCodes")));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreCompositeEncoder")))

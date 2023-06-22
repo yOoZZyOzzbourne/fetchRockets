@@ -90,4 +90,7 @@ android {
     }
     buildToolsVersion = "33.0.1"
 }
+dependencies {
+    implementation("androidx.lifecycle:lifecycle-common:2.6.1")
+}
 
