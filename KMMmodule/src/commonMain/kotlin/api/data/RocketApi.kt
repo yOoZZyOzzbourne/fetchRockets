@@ -34,7 +34,7 @@ class RocketApi {
             return client.get("https://api.spacexdata.com/v4/rockets/").body()
         } catch (exception: Throwable) {
             throw when (exception) {
-                is ClientRequestException -> RocketException.HttpError(exception.response.status)
+                is ServerResponseException -> RocketException.HttpError(exception.response.status)
                 else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
             }
         }
@@ -45,7 +45,7 @@ class RocketApi {
             success(rockets.body())
         } catch (exception: Throwable) {
             val rocketException = when (exception) {
-                is IOException -> RocketException.NetworkError("Network stopped working")
+                is ServerResponseException -> RocketException.NetworkError("Network stopped working")
                 else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
             }
             failure(rocketException)
@@ -57,7 +57,7 @@ class RocketApi {
             return client.get("https://api.spacexdata.com/v4/rockets/$rocketId").body()
         } catch (exception: Throwable) {
             throw when (exception) {
-                is IOException -> RocketException.NetworkError("Network stopped working")
+                is ServerResponseException -> RocketException.NetworkError("Network stopped working")
                 else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
             }
         }
