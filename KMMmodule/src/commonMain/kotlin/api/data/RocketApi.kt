@@ -36,7 +36,7 @@ class RocketApi {
             return client.get("https://api.spacexdata.com/v4/rockets/").body()
         } catch (exception: Throwable) {
             throw when (exception) {
-                is ServerResponseException -> RocketException.HttpError(exception.response.status)
+                is ClientRequestException -> RocketException.HttpError(exception.response.status)
                 else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
             }
         }
@@ -46,7 +46,7 @@ class RocketApi {
             return client.get("https://api.spacexdata.com/v4/rockets/$rocketId").body()
         } catch (exception: Throwable) {
             throw when (exception) {
-                is ServerResponseException -> RocketException.NetworkError("Network stopped working")
+                is ClientRequestException -> RocketException.NetworkError("Network stopped working")
                 else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
             }
         }
