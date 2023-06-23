@@ -20,13 +20,12 @@ sealed class RocketException(message: String) : Throwable(message) {
     data class UnknownError(val errorMessage: String) : RocketException("Unknown error")
 }
 class RocketApi {
-    private val client = HttpClient(CIO) {
+    private val client = HttpClient {
         install(ContentNegotiation) {
             json(Json {
                 prettyPrint = true
                 isLenient = true
                 ignoreUnknownKeys = true
-                expectSuccess = true
             })
         }
     }
