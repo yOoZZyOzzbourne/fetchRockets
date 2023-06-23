@@ -29,10 +29,9 @@ class RocketApi {
             })
         }
     }
-
     @Throws(Throwable::class) suspend fun fetchAllRockets(): List<RocketKMM> {
         try {
-            return client.get("https://api.spacexdata.com/v4/rockets/").body()
+            return client.get("https://api.spacexdata.com/v4/rock/").body()
         } catch (exception: Throwable) {
             throw when (exception) {
                 is ClientRequestException -> RocketException.HttpError(exception.response.status)
