@@ -387,7 +387,6 @@ __attribute__((swift_name("RocketApi")))
  * @note This method converts all Kotlin exceptions to errors.
 */
 - (void)fetchRocketsSuccess:(void (^)(NSArray<KMMRocketKMM *> *))success failure:(void (^)(KMMRocketException *))failure completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("fetchRockets(success:failure:completionHandler:)")));
-- (NSString *)foo __attribute__((swift_name("foo()")));
 @end
 
 __attribute__((swift_name("KotlinThrowable")))

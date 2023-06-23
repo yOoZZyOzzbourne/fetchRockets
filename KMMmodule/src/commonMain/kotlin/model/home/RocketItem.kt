@@ -19,9 +19,7 @@ data class RocketItem(
 
 @Serializable
 data class RocketKMM(
-    //@SerialName("rocket_id")
     val id: String,
-    //@SerialName("rocket_name")
     val name: String,
     @SerialName("description")
     val overview: String,

@@ -2,6 +2,7 @@ package api.data
 
 import io.ktor.client.*
 import io.ktor.client.call.body
+import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.ResponseException
 import io.ktor.client.plugins.ServerResponseException
@@ -19,12 +20,13 @@ sealed class RocketException(message: String) : Throwable(message) {
     data class UnknownError(val errorMessage: String) : RocketException("Unknown error")
 }
 class RocketApi {
-    private val client = HttpClient {
+    private val client = HttpClient(CIO) {
         install(ContentNegotiation) {
             json(Json {
                 prettyPrint = true
                 isLenient = true
                 ignoreUnknownKeys = true
+                expectSuccess = true
             })
         }
     }
@@ -39,6 +41,18 @@ class RocketApi {
             }
         }
     }
+    @Throws(Throwable::class) suspend fun fetchRocketById(rocketId: String): RocketKMM {
+        try {
+            return client.get("https://api.spacexdata.com/v4/rockets/$rocketId").body()
+        } catch (exception: Throwable) {
+            throw when (exception) {
+                is ServerResponseException -> RocketException.NetworkError("Network stopped working")
+                else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
+            }
+        }
+    }
+
+    //MARK: Testing error handling
     @Throws(Throwable::class) suspend fun fetchRockets(success: (List<RocketKMM>) -> Unit, failure: (RocketException) -> Unit) {
         try {
             val rockets = client.get("https://api.spacexdata.com/v4/rockets/")
@@ -52,20 +66,6 @@ class RocketApi {
         }
     }
 
-    @Throws(Throwable::class) suspend fun fetchRocketById(rocketId: String): RocketKMM {
-        try {
-            return client.get("https://api.spacexdata.com/v4/rockets/$rocketId").body()
-        } catch (exception: Throwable) {
-            throw when (exception) {
-                is ServerResponseException -> RocketException.NetworkError("Network stopped working")
-                else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
-            }
-        }
-    }
-
-    fun foo(): String {
-        return "AAAAAAAAAA"
-    }
 }
 
 //    override suspend fun getRockets(): Data<List<RocketItem>> {
