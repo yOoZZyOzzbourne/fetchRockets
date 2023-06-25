@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class KMMData<__covariant T>, KMMKotlinThrowable, KMMDataError, KMMKotlinNothing, KMMDataSuccess<__covariant T>, KMMRocketItemCompanion, KMMRocketItem, KMMRocketKMMLineMeasure, KMMRocketKMMWeightScale, KMMRocketKMMStage, KMMRocketKMMCompanion, KMMRocketKMM, KMMRocketKMMLineMeasureCompanion, KMMRocketKMMStageCompanion, KMMRocketKMMWeightScaleCompanion, KMMKotlinArray<T>, KMMRocketException, KMMKtor_httpHttpStatusCode, KMMRocketExceptionHttpError, KMMRocketExceptionNetworkError, KMMRocketExceptionUnknownError, KMMRocketApi, KMMKotlinUnit, NSError, KMMKotlinException, KMMKotlinRuntimeException, KMMKotlinIllegalStateException, KMMKtor_httpHttpStatusCodeCompanion, KMMKotlinx_serialization_coreSerializersModule, KMMKotlinx_serialization_coreSerialKind;
+@class KMMData<__covariant T>, KMMKotlinThrowable, KMMDataError, KMMKotlinNothing, KMMDataSuccess<__covariant T>, KMMRocketItemCompanion, KMMRocketItem, KMMRocketKMMLineMeasure, KMMRocketKMMWeightScale, KMMRocketKMMStage, KMMRocketKMMCompanion, KMMRocketKMM, KMMRocketKMMLineMeasureCompanion, KMMRocketKMMStageCompanion, KMMRocketKMMWeightScaleCompanion, KMMKotlinArray<T>, KMMRocketException, KMMKtor_httpHttpStatusCode, KMMRocketExceptionHttpError, KMMRocketExceptionNetworkError, KMMRocketExceptionUnknownError, KMMRocketResult<__covariant T>, KMMRocketResultFailure, KMMRocketResultSuccess<__covariant T>, KMMRocketApi, KMMKotlinUnit, NSError, KMMKotlinException, KMMKotlinRuntimeException, KMMKotlinIllegalStateException, KMMKtor_httpHttpStatusCodeCompanion, KMMKotlinx_serialization_coreSerializersModule, KMMKotlinx_serialization_coreSerialKind;
 
 @protocol KMMPlatform, KMMUseCase, KMMKotlinx_serialization_coreKSerializer, KMMSuspendUseCase, KMMSynchronousUseCase, KMMKotlinSuspendFunction0, KMMKotlinx_serialization_coreEncoder, KMMKotlinx_serialization_coreSerialDescriptor, KMMKotlinx_serialization_coreSerializationStrategy, KMMKotlinx_serialization_coreDecoder, KMMKotlinx_serialization_coreDeserializationStrategy, KMMKotlinIterator, KMMKotlinComparable, KMMKotlinFunction, KMMKotlinx_serialization_coreCompositeEncoder, KMMKotlinAnnotation, KMMKotlinx_serialization_coreCompositeDecoder, KMMKotlinx_serialization_coreSerializersModuleCollector, KMMKotlinKClass, KMMKotlinKDeclarationContainer, KMMKotlinKAnnotatedElement, KMMKotlinKClassifier;
 
@@ -436,8 +436,34 @@ __attribute__((swift_name("RocketException.UnknownError")))
 @property (readonly) NSString *errorMessage __attribute__((swift_name("errorMessage")));
 @end
 
+__attribute__((swift_name("RocketResult")))
+@interface KMMRocketResult<__covariant T> : KMMBase
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketResultFailure")))
+@interface KMMRocketResultFailure : KMMRocketResult<KMMKotlinNothing *>
+- (instancetype)initWithError:(KMMRocketException *)error __attribute__((swift_name("init(error:)"))) __attribute__((objc_designated_initializer));
+- (KMMRocketResultFailure *)doCopyError:(KMMRocketException *)error __attribute__((swift_name("doCopy(error:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) KMMRocketException *error __attribute__((swift_name("error")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("RocketResultSuccess")))
+@interface KMMRocketResultSuccess<__covariant T> : KMMRocketResult<NSArray<KMMRocketKMM *> *>
+- (instancetype)initWithData:(T _Nullable)data __attribute__((swift_name("init(data:)"))) __attribute__((objc_designated_initializer));
+- (KMMRocketResultSuccess<T> *)doCopyData:(T _Nullable)data __attribute__((swift_name("doCopy(data:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) T _Nullable data __attribute__((swift_name("data")));
+@end
+
 @interface KMMRocketApi (Extensions)
-- (KMMKotlinUnit *(^(^)(KMMKotlinUnit *(^)(id _Nullable, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *)))(void))fetchAllRockets __attribute__((swift_name("fetchAllRockets()")));
+- (KMMKotlinUnit *(^(^)(KMMKotlinUnit *(^)(KMMRocketResult<NSArray<KMMRocketKMM *> *> *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *)))(void))fetchAllRockets __attribute__((swift_name("fetchAllRockets()")));
 @end
 
 __attribute__((objc_subclassing_restricted))
