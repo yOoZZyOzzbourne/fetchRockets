@@ -35,9 +35,7 @@ class RocketApi {
     @NativeCoroutines
     suspend fun fetchAllRockets(): Result<List<RocketKMM>> {
         return kotlin.runCatching {
-            withContext(Dispatchers.Main) {
-                client.get("https://api.spacexdata.com/v4/rock/")
-            }
+                client.get("https://api.spacexdata.com/v4/rockets/")
         }.fold(
             onSuccess = { response ->
                 Result.success(response.body())
