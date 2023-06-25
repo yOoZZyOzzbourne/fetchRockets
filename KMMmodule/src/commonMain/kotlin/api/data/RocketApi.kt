@@ -32,22 +32,18 @@ class RocketApi {
             })
         }
     }
-    sealed class RocketResult<out T> {
-        data class Success<out T>(val data: T) : RocketResult<T>()
-        data class Failure(val error: RocketException) : RocketResult<Nothing>()
-    }
     @NativeCoroutines
-    suspend fun fetchAllRockets(): RocketResult<List<RocketKMM>> {
+    suspend fun fetchAllRockets(): Result<List<RocketKMM>> {
         return kotlin.runCatching {
-            withContext(Dispatchers.Default) {
-                client.get("https://api.spacexdata.com/v4/rockets/")
+            withContext(Dispatchers.Main) {
+                client.get("https://api.spacexdata.com/v4/rock/")
             }
         }.fold(
             onSuccess = { response ->
-                RocketResult.Success(response.body())
+                Result.success(response.body())
             },
             onFailure = { exception ->
-                RocketResult.Failure(when (exception) {
+                Result.failure(when (exception) {
                     is ClientRequestException -> RocketException.HttpError(exception.response.status)
                     is IOException -> RocketException.NetworkError(exception.message ?: "Network error occurred")
                     else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
