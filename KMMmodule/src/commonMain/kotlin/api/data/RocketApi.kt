@@ -38,7 +38,8 @@ class RocketApi {
                 client.get("https://api.spacexdata.com/v4/rockets/")
         }.fold(
             onSuccess = { response ->
-                Result.success(response.body())
+                val rocketList: List<RocketKMM> = response.body()
+                Result.success(rocketList)
             },
             onFailure = { exception ->
                 Result.failure(when (exception) {
