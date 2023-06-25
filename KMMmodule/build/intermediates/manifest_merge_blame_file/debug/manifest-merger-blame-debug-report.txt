@@ -3,6 +3,6 @@
 3    package="com.example.fetchRockets" >
 4
 5    <uses-sdk android:minSdkVersion="24" />
-5-->/Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest2520017321424345977.xml
+5-->/Users/martinficek/fetchRockets/KMMmodule/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest15472891026023069387.xml
 6
 7</manifest>

@@ -2,7 +2,9 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
-    kotlin("plugin.serialization") version "1.8.22"
+    kotlin("plugin.serialization") version "1.8.21"
+    id("com.google.devtools.ksp") version "1.8.21-1.0.11"
+    id("com.rickclephas.kmp.nativecoroutines") version "1.0.0-ALPHA-8"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -80,6 +82,11 @@ kotlin {
             }
         }
     }
+
+    kotlin.sourceSets.all {
+        languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+    }
+
 }
 
 android {
@@ -88,7 +95,7 @@ android {
     defaultConfig {
         minSdk = 24
     }
-    buildToolsVersion = "33.0.1"
+    buildToolsVersion = "34.0.0"
 }
 dependencies {
     implementation("androidx.lifecycle:lifecycle-common:2.6.1")

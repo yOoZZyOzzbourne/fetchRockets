@@ -1,5 +1,6 @@
 package api.data
 
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import io.ktor.client.*
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
@@ -11,6 +12,8 @@ import io.ktor.client.request.*
 import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.utils.io.errors.IOException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import model.home.RocketKMM
 
@@ -29,15 +32,24 @@ class RocketApi {
             })
         }
     }
-    @Throws(Throwable::class) suspend fun fetchAllRockets(): List<RocketKMM> {
-        try {
-            return client.get("https://api.spacexdata.com/v4/rock/").body()
-        } catch (exception: Throwable) {
-            throw when (exception) {
-                is ClientRequestException -> RocketException.HttpError(exception.response.status)
-                else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
+    @NativeCoroutines
+    suspend fun fetchAllRockets(): Result<List<RocketKMM>> {
+        return kotlin.runCatching {
+            withContext(Dispatchers.Main) {
+                client.get("https://api.spacexdata.com/v4/rock/")
             }
-        }
+        }.fold(
+            onSuccess = { response ->
+                Result.success(response.body())
+            },
+            onFailure = { exception ->
+                Result.failure(when (exception) {
+                    is ClientRequestException -> RocketException.HttpError(exception.response.status)
+                    is IOException -> RocketException.NetworkError(exception.message ?: "Network error occurred")
+                    else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
+                })
+            }
+        )
     }
     @Throws(Throwable::class) suspend fun fetchRocketById(rocketId: String): RocketKMM {
         try {
@@ -51,18 +63,18 @@ class RocketApi {
     }
 
     //MARK: Testing error handling
-    @Throws(Throwable::class) suspend fun fetchRockets(success: (List<RocketKMM>) -> Unit, failure: (RocketException) -> Unit) {
-        try {
-            val rockets = client.get("https://api.spacexdata.com/v4/rockets/")
-            success(rockets.body())
-        } catch (exception: Throwable) {
-            val rocketException = when (exception) {
-                is ServerResponseException -> RocketException.NetworkError("Network stopped working")
-                else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
-            }
-            failure(rocketException)
-        }
-    }
+//    @Throws(Throwable::class) suspend fun fetchRockets(success: (List<RocketKMM>) -> Unit, failure: (RocketException) -> Unit) {
+//        try {
+//            val rockets = client.get("https://api.spacexdata.com/v4/rockets/")
+//            success(rockets.body())
+//        } catch (exception: Throwable) {
+//            val rocketException = when (exception) {
+//                is ServerResponseException -> RocketException.NetworkError("Network stopped working")
+//                else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
+//            }
+//            failure(rocketException)
+//        }
+//    }
 
 }
 
