@@ -13,7 +13,7 @@ public fun RocketApi.fetchAllRocketsNative(): NativeSuspend<Result<List<RocketKM
     nativeSuspend(null) { fetchAllRockets() }
 
 @ObjCName(name = "fetchAllRocketss")
-public fun RocketApi.fetchAllRocketssNative(): NativeSuspend<Result<List<RocketKMM>>> =
+public fun RocketApi.fetchAllRocketssNative(): NativeSuspend<RocketResult<List<RocketKMM>>> =
     nativeSuspend(null) { fetchAllRocketss() }
 
 @ObjCName(name = "fetchRocketById")

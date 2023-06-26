@@ -23,6 +23,11 @@ sealed class RocketException(message: String) : Throwable(message) {
     data class UnknownError(val errorMessage: String) : RocketException("Unknown error")
 }
 
+sealed class RocketResult<out T> {
+    data class Success(val data: List<RocketKMM>) : RocketResult<List<RocketKMM>>()
+    data class Failure(val error: RocketException) : RocketResult<Nothing>()
+}
+
 class RocketApi {
     private val client = HttpClient {
         install(ContentNegotiation) {
@@ -53,11 +58,11 @@ class RocketApi {
     }
 
     @NativeCoroutines
-    suspend fun fetchAllRocketss(): Result<List<RocketKMM>> {
+    suspend fun fetchAllRocketss(): RocketResult<List<RocketKMM>> {
         return try {
-            Result.success(client.get("https://api.spacexdata.com/v4/rockets/").body())
+            RocketResult.Success(client.get("https://api.spacexdata.com/v4/rockets/").body())
         } catch (exception: Throwable) {
-            Result.failure(
+            RocketResult.Failure(
                 when (exception) {
                     is ClientRequestException -> RocketException.HttpError(exception.response.status)
                     is IOException -> RocketException.NetworkError(
