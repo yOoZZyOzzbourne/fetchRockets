@@ -40,53 +40,53 @@ class RocketApi {
         }
     }
 
-    @NativeCoroutines
-    suspend fun fetchAllRockets(): Result<List<RocketKMM>> {
-        return kotlin.runCatching {
-            client.get("https://api.spacexdata.com/v4/rockets/")
-        }.fold(
-            onSuccess = { response ->
-                val rocketList: List<RocketKMM> = response.body()
-                Result.success(rocketList)
-            },
-            onFailure = { exception ->
-                Result.failure(
-                    when (exception) {
-                        is ClientRequestException -> RocketException.HttpError(exception.response.status)
-                        is IOException -> RocketException.NetworkError(
-                            exception.message ?: "Network error occurred"
-                        )
-
-                        else -> RocketException.UnknownError(
-                            exception.message ?: "Unknown error occurred"
-                        )
-                    }
-                )
-            }
-        )
-    }
+//    @NativeCoroutines
+//    suspend fun fetchAllRockets(): Result<List<RocketKMM>> {
+//        return kotlin.runCatching {
+//            client.get("https://api.spacexdata.com/v4/rockets/")
+//        }.fold(
+//            onSuccess = { response ->
+//                val rocketList: List<RocketKMM> = response.body()
+//                Result.success(rocketList)
+//            },
+//            onFailure = { exception ->
+//                Result.failure(
+//                    when (exception) {
+//                        is ClientRequestException -> RocketException.HttpError(exception.response.status)
+//                        is IOException -> RocketException.NetworkError(
+//                            exception.message ?: "Network error occurred"
+//                        )
+//
+//                        else -> RocketException.UnknownError(
+//                            exception.message ?: "Unknown error occurred"
+//                        )
+//                    }
+//                )
+//            }
+//        )
+//    }
 
     //Same thing but with custom result type
 
-//    @NativeCoroutines
-//    suspend fun fetchAllRockets(): RocketResult<List<RocketKMM>> {
-//        return try {
-//            RocketResult.Success(client.get("https://api.spacexdata.com/v4/rockets/").body())
-//        } catch (exception: Throwable) {
-//            RocketResult.Failure(
-//                when (exception) {
-//                    is ClientRequestException -> RocketException.HttpError(exception.response.status)
-//                    is IOException -> RocketException.NetworkError(
-//                        exception.message ?: "Network error occurred"
-//                    )
-//
-//                    else -> RocketException.UnknownError(
-//                        exception.message ?: "Unknown error occurred"
-//                    )
-//                }
-//            )
-//        }
-//    }
+    @NativeCoroutines
+    suspend fun fetchAllRockets(): RocketResult<List<RocketKMM>> {
+        return try {
+            RocketResult.Success(client.get("https://api.spacexdata.com/v4/rockets/").body())
+        } catch (exception: Throwable) {
+            RocketResult.Failure(
+                when (exception) {
+                    is ClientRequestException -> RocketException.HttpError(exception.response.status)
+                    is IOException -> RocketException.NetworkError(
+                        exception.message ?: "Network error occurred"
+                    )
+
+                    else -> RocketException.UnknownError(
+                        exception.message ?: "Unknown error occurred"
+                    )
+                }
+            )
+        }
+    }
 
     @NativeCoroutines
     suspend fun fetchRocketById(rocketId: String): RocketKMM {
