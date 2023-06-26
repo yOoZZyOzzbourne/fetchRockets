@@ -44,23 +44,12 @@ kotlin {
 
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
-
-//                implementation("io.ktor:ktor-client-core:$ktorVersion")
-//                implementation("io.ktor:ktor-client-core:1.6.1") // Core Ktor client dependency
-//                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0") // Serialization dependency
                 implementation("io.ktor:ktor-client-json:$ktorVersion")
-//                implementation("io.ktor:ktor-client-core:1.6.1")
-//                implementation("io.ktor:ktor-client-serialization:1.6.1") // For KotlinxSerializer
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-cio:$ktorVersion")
                 implementation("io.ktor:ktor-client-logging:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-                //implementation("com.squareup.okhttp3:okhttp:4.9.1")
-                // Add Koin dependency
-                //implementation("io.insert-koin:koin-core:3.1.2")
-                // Add Flow and flow import statements
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
             }
         }
@@ -69,13 +58,11 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
         }
-
         val iosMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-ios:$ktorVersion")
