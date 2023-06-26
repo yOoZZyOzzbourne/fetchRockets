@@ -433,6 +433,7 @@ __attribute__((swift_name("RocketException.UnknownError")))
 
 @interface KMMRocketApi (Extensions)
 - (KMMKotlinUnit *(^(^)(KMMKotlinUnit *(^)(id _Nullable, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *)))(void))fetchAllRockets __attribute__((swift_name("fetchAllRockets()")));
+- (KMMKotlinUnit *(^(^)(KMMKotlinUnit *(^)(id _Nullable, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *)))(void))fetchAllRocketss __attribute__((swift_name("fetchAllRocketss()")));
 - (KMMKotlinUnit *(^(^)(KMMKotlinUnit *(^)(KMMRocketKMM *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *)))(void))fetchRocketByIdRocketId:(NSString *)rocketId __attribute__((swift_name("fetchRocketById(rocketId:)")));
 @end
 

@@ -12,6 +12,10 @@ import model.home.RocketKMM
 public fun RocketApi.fetchAllRocketsNative(): NativeSuspend<Result<List<RocketKMM>>> =
     nativeSuspend(null) { fetchAllRockets() }
 
+@ObjCName(name = "fetchAllRocketss")
+public fun RocketApi.fetchAllRocketssNative(): NativeSuspend<Result<List<RocketKMM>>> =
+    nativeSuspend(null) { fetchAllRocketss() }
+
 @ObjCName(name = "fetchRocketById")
 public fun RocketApi.fetchRocketByIdNative(rocketId: String): NativeSuspend<RocketKMM> =
     nativeSuspend(null) { fetchRocketById(rocketId) }
