@@ -438,12 +438,12 @@ __attribute__((swift_name("RocketResult")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("RocketResultFailure")))
 @interface KMMRocketResultFailure : KMMRocketResult<KMMKotlinNothing *>
-- (instancetype)initWithError:(KMMKotlinThrowable *)error __attribute__((swift_name("init(error:)"))) __attribute__((objc_designated_initializer));
-- (KMMRocketResultFailure *)doCopyError:(KMMKotlinThrowable *)error __attribute__((swift_name("doCopy(error:)")));
+- (instancetype)initWithError:(KMMRocketException *)error __attribute__((swift_name("init(error:)"))) __attribute__((objc_designated_initializer));
+- (KMMRocketResultFailure *)doCopyError:(KMMRocketException *)error __attribute__((swift_name("doCopy(error:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) KMMKotlinThrowable *error __attribute__((swift_name("error")));
+@property (readonly) KMMRocketException *error __attribute__((swift_name("error")));
 @end
 
 __attribute__((objc_subclassing_restricted))

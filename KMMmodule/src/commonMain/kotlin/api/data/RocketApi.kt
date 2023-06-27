@@ -25,7 +25,7 @@ sealed class RocketException(message: String) : Throwable(message) {
 
 sealed class RocketResult<out T> {
     data class Success<out T>(val data: T) : RocketResult<T>()
-    data class Failure(val error: Throwable) : RocketResult<Nothing>()
+    data class Failure(val error: RocketException) : RocketResult<Nothing>()
 }
 
 
