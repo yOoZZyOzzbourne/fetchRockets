@@ -459,7 +459,7 @@ __attribute__((swift_name("RocketResultSuccess")))
 
 @interface KMMRocketApi (Extensions)
 - (KMMKotlinUnit *(^(^)(KMMKotlinUnit *(^)(KMMRocketResult<NSArray<KMMRocketKMM *> *> *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *)))(void))fetchAllRockets __attribute__((swift_name("fetchAllRockets()")));
-- (KMMKotlinUnit *(^(^)(KMMKotlinUnit *(^)(KMMRocketKMM *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *)))(void))fetchRocketByIdRocketId:(NSString *)rocketId __attribute__((swift_name("fetchRocketById(rocketId:)")));
+- (KMMKotlinUnit *(^(^)(KMMKotlinUnit *(^)(KMMRocketResult<KMMRocketKMM *> *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *), KMMKotlinUnit *(^)(NSError *, KMMKotlinUnit *)))(void))fetchRocketByIdRocketId:(NSString *)rocketId __attribute__((swift_name("fetchRocketById(rocketId:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))

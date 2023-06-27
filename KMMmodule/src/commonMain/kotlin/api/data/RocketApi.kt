@@ -3,17 +3,12 @@ package api.data
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import io.ktor.client.*
 import io.ktor.client.call.body
-import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.ClientRequestException
-import io.ktor.client.plugins.ResponseException
-import io.ktor.client.plugins.ServerResponseException
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.*
 import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.utils.io.errors.IOException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import model.home.RocketKMM
 
@@ -79,7 +74,6 @@ class RocketApi {
                     is IOException -> RocketException.NetworkError(
                         exception.message ?: "Network error occurred"
                     )
-
                     else -> RocketException.UnknownError(
                         exception.message ?: "Unknown error occurred"
                     )
@@ -89,14 +83,21 @@ class RocketApi {
     }
 
     @NativeCoroutines
-    suspend fun fetchRocketById(rocketId: String): RocketKMM {
-        try {
-            return client.get("https://api.spacexdata.com/v4/rockets/$rocketId").body()
+    suspend fun fetchRocketById(rocketId: String):  RocketResult<RocketKMM> {
+        return try {
+            RocketResult.Success(client.get("https://api.spacexdata.com/v4/rockets/$rocketId").body())
         } catch (exception: Throwable) {
-            throw when (exception) {
-                is ClientRequestException -> RocketException.NetworkError("Network stopped working")
-                else -> RocketException.UnknownError(exception.message ?: "Unknown error occurred")
-            }
+            RocketResult.Failure(
+                when (exception) {
+                    is ClientRequestException -> RocketException.HttpError(exception.response.status)
+                    is IOException -> RocketException.NetworkError(
+                        exception.message ?: "Network error occurred"
+                    )
+                    else -> RocketException.UnknownError(
+                        exception.message ?: "Unknown error occurred"
+                    )
+                }
+            )
         }
     }
 }
