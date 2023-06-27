@@ -82,6 +82,26 @@ class RocketApi {
         }
     }
 
+    //Purposeful failure
+    @NativeCoroutines
+    suspend fun fetchFailRockets(): RocketResult<List<RocketKMM>> {
+        return try {
+            RocketResult.Success(client.get("https://api.spacexdata.com/v4/rocs/").body())
+        } catch (exception: Throwable) {
+            RocketResult.Failure(
+                when (exception) {
+                    is ClientRequestException -> RocketException.HttpError(exception.response.status)
+                    is IOException -> RocketException.NetworkError(
+                        exception.message ?: "Network error occurred"
+                    )
+                    else -> RocketException.UnknownError(
+                        exception.message ?: "Unknown error occurred"
+                    )
+                }
+            )
+        }
+    }
+
     @NativeCoroutines
     suspend fun fetchRocketById(rocketId: String):  RocketResult<RocketKMM> {
         return try {
