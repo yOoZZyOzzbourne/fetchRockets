@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class KMMData<__covariant T>, KMMKotlinThrowable, KMMDataError, KMMKotlinNothing, KMMDataSuccess<__covariant T>, KMMRocketItemCompanion, KMMRocketItem, KMMRocketKMMLineMeasure, KMMRocketKMMWeightScale, KMMRocketKMMStage, KMMRocketKMMCompanion, KMMRocketKMM, KMMRocketKMMLineMeasureCompanion, KMMRocketKMMStageCompanion, KMMRocketKMMWeightScaleCompanion, KMMKotlinArray<T>, KMMRocketException, KMMKtor_httpHttpStatusCode, KMMRocketExceptionHttpError, KMMRocketExceptionNetworkError, KMMRocketExceptionUnknownError, KMMRocketResult<__covariant T>, KMMRocketResultFailure, KMMRocketResultSuccess<__covariant T>, KMMRocketApi, KMMKotlinUnit, NSError, KMMKotlinException, KMMKotlinRuntimeException, KMMKotlinIllegalStateException, KMMKtor_httpHttpStatusCodeCompanion, KMMKotlinx_serialization_coreSerializersModule, KMMKotlinx_serialization_coreSerialKind;
+@class KMMRocketKMMLineMeasure, KMMRocketKMMWeightScale, KMMRocketKMMStage, KMMRocketKMMCompanion, KMMRocketKMM, KMMRocketKMMLineMeasureCompanion, KMMRocketKMMStageCompanion, KMMRocketKMMWeightScaleCompanion, KMMKotlinThrowable, KMMKotlinArray<T>, KMMRocketException, KMMKtor_httpHttpStatusCode, KMMRocketExceptionHttpError, KMMRocketExceptionNetworkError, KMMRocketExceptionUnknownError, KMMRocketResult<__covariant T>, KMMRocketResultFailure, KMMKotlinNothing, KMMRocketResultSuccess<__covariant T>, KMMRocketApi, KMMKotlinUnit, NSError, KMMKotlinException, KMMKotlinRuntimeException, KMMKotlinIllegalStateException, KMMKtor_httpHttpStatusCodeCompanion, KMMKotlinx_serialization_coreSerializersModule, KMMKotlinx_serialization_coreSerialKind;
 
-@protocol KMMPlatform, KMMUseCase, KMMKotlinx_serialization_coreKSerializer, KMMSuspendUseCase, KMMSynchronousUseCase, KMMKotlinSuspendFunction0, KMMKotlinx_serialization_coreEncoder, KMMKotlinx_serialization_coreSerialDescriptor, KMMKotlinx_serialization_coreSerializationStrategy, KMMKotlinx_serialization_coreDecoder, KMMKotlinx_serialization_coreDeserializationStrategy, KMMKotlinIterator, KMMKotlinComparable, KMMKotlinFunction, KMMKotlinx_serialization_coreCompositeEncoder, KMMKotlinAnnotation, KMMKotlinx_serialization_coreCompositeDecoder, KMMKotlinx_serialization_coreSerializersModuleCollector, KMMKotlinKClass, KMMKotlinKDeclarationContainer, KMMKotlinKAnnotatedElement, KMMKotlinKClassifier;
+@protocol KMMPlatform, KMMUseCase, KMMKotlinx_serialization_coreKSerializer, KMMSuspendUseCase, KMMSynchronousUseCase, KMMKotlinx_serialization_coreEncoder, KMMKotlinx_serialization_coreSerialDescriptor, KMMKotlinx_serialization_coreSerializationStrategy, KMMKotlinx_serialization_coreDecoder, KMMKotlinx_serialization_coreDeserializationStrategy, KMMKotlinIterator, KMMKotlinComparable, KMMKotlinx_serialization_coreCompositeEncoder, KMMKotlinAnnotation, KMMKotlinx_serialization_coreCompositeDecoder, KMMKotlinx_serialization_coreSerializersModuleCollector, KMMKotlinKClass, KMMKotlinKDeclarationContainer, KMMKotlinKAnnotatedElement, KMMKotlinKClassifier;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -186,63 +186,6 @@ __attribute__((swift_name("SynchronousUseCase")))
 @protocol KMMSynchronousUseCase <KMMUseCase>
 @required
 - (id _Nullable)invokeInput:(id _Nullable)input __attribute__((swift_name("invoke(input:)")));
-@end
-
-__attribute__((swift_name("Data")))
-@interface KMMData<__covariant T> : KMMBase
-- (T _Nullable)getSuccessValueOrThrow __attribute__((swift_name("getSuccessValueOrThrow()")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("DataError")))
-@interface KMMDataError : KMMData<KMMKotlinNothing *>
-- (instancetype)initWithCause:(KMMKotlinThrowable *)cause previousError:(KMMDataError * _Nullable)previousError __attribute__((swift_name("init(cause:previousError:)"))) __attribute__((objc_designated_initializer));
-- (KMMDataError *)doCopyCause:(KMMKotlinThrowable *)cause previousError:(KMMDataError * _Nullable)previousError __attribute__((swift_name("doCopy(cause:previousError:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) KMMKotlinThrowable *cause __attribute__((swift_name("cause")));
-@property (readonly) KMMDataError * _Nullable previousError __attribute__((swift_name("previousError")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("DataSuccess")))
-@interface KMMDataSuccess<__covariant T> : KMMData<T>
-- (instancetype)initWithValue:(T _Nullable)value __attribute__((swift_name("init(value:)"))) __attribute__((objc_designated_initializer));
-- (KMMDataSuccess<T> *)doCopyValue:(T _Nullable)value __attribute__((swift_name("doCopy(value:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) T _Nullable value __attribute__((swift_name("value")));
-@end
-
-
-/**
- * @note annotations
- *   kotlinx.serialization.Serializable
-*/
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("RocketItem")))
-@interface KMMRocketItem : KMMBase
-- (instancetype)initWithRocketID:(NSString * _Nullable)rocketID firstFlight:(NSString * _Nullable)firstFlight rocketName:(NSString * _Nullable)rocketName __attribute__((swift_name("init(rocketID:firstFlight:rocketName:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) KMMRocketItemCompanion *companion __attribute__((swift_name("companion")));
-- (KMMRocketItem *)doCopyRocketID:(NSString * _Nullable)rocketID firstFlight:(NSString * _Nullable)firstFlight rocketName:(NSString * _Nullable)rocketName __attribute__((swift_name("doCopy(rocketID:firstFlight:rocketName:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString * _Nullable firstFlight __attribute__((swift_name("firstFlight")));
-@property (readonly) NSString * _Nullable rocketID __attribute__((swift_name("rocketID")));
-@property (readonly) NSString * _Nullable rocketName __attribute__((swift_name("rocketName")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("RocketItem.Companion")))
-@interface KMMRocketItemCompanion : KMMBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) KMMRocketItemCompanion *shared __attribute__((swift_name("shared")));
-- (id<KMMKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
 
@@ -481,17 +424,6 @@ __attribute__((swift_name("UseCaseKt")))
 + (id _Nullable)invoke:(id<KMMSynchronousUseCase>)receiver __attribute__((swift_name("invoke(_:)")));
 @end
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("DataExtensionsKt")))
-@interface KMMDataExtensionsKt : KMMBase
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-+ (void)safeCallBlock:(id<KMMKotlinSuspendFunction0>)block completionHandler:(void (^)(KMMData<id> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("safeCall(block:completionHandler:)")));
-@end
-
 __attribute__((swift_name("KotlinException")))
 @interface KMMKotlinException : KMMKotlinThrowable
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
@@ -531,11 +463,6 @@ __attribute__((swift_name("KotlinCancellationException")))
 - (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithMessage:(NSString * _Nullable)message cause:(KMMKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithCause:(KMMKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("KotlinNothing")))
-@interface KMMKotlinNothing : KMMBase
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreSerializationStrategy")))
@@ -591,6 +518,11 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode")))
 @end
 
 __attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinNothing")))
+@interface KMMKotlinNothing : KMMBase
+@end
+
+__attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KotlinUnit")))
 @interface KMMKotlinUnit : KMMBase
 + (instancetype)alloc __attribute__((unavailable));
@@ -598,22 +530,6 @@ __attribute__((swift_name("KotlinUnit")))
 + (instancetype)unit __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) KMMKotlinUnit *shared __attribute__((swift_name("shared")));
 - (NSString *)description __attribute__((swift_name("description()")));
-@end
-
-__attribute__((swift_name("KotlinFunction")))
-@protocol KMMKotlinFunction
-@required
-@end
-
-__attribute__((swift_name("KotlinSuspendFunction0")))
-@protocol KMMKotlinSuspendFunction0 <KMMKotlinFunction>
-@required
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)invokeWithCompletionHandler:(void (^)(id _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("invoke(completionHandler:)")));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
