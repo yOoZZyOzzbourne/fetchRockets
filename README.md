@@ -39,9 +39,9 @@ Functions in **NativeCoroutines** are handled this way:
 ```Swift 
  let rockets = try await asyncFunction(for: rocketApi.fetchAllRockets())
 ```
-  note that the `asyncFunction` is from **NativeCoroutines** library that needs to be implemented.
+  note that the `asyncFunction` is from **NativeCoroutines** library that needs to be imported.
 
-Full implementation in Swift:
+## Full implementation in Swift:
 ```Swift 
   do {
        let rocket = try await asyncFunction(for: rocketApi.fetchAllRockets())
