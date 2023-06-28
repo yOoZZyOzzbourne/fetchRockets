@@ -47,6 +47,7 @@ Functions in **NativeCoroutines** are handled this way:
        let rocket = try await asyncFunction(for: rocketApi.fetchAllRockets())
  //MARK: Even though warning is saying "always fails" it in fact does not fail at all. Swift is confused about KMM. - Ignore this warrning
        if let success = rocket as? RocketResultSuccess<AnyObject> {
+          //Custom mapping into domain model
             return success
         } else if let failure = rocket as? RocketResult<RocketException> {
           //Custoom error mapping to domain error
