@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "fetchRockets"
 include(":KMMmodule")
-//include(":fetchRockets")
