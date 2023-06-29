@@ -2,8 +2,7 @@
 KMM module for iOS solution application
 
 Simple library in Kotlin Multiplatform Mobile that has REST API requests,
-that are used in our example app for iOS version in Quanti 
-https://github.com/Qase/mobile-assignment
+that are used in our example app for iOS version in Quanti [Mobile assignment](https://github.com/Qase/mobile-assignment)
 
 KMM is used in both iOS (Swift) and Android (Kotlin) versions of mobile development, its new a inovative way of creating shared code for apps.
 In this case this is shared use case of `RocketClient` that does the background work of creating api request, serializing (parsing) data from `json` to struct/class and then sending
@@ -16,13 +15,13 @@ In this case this is shared use case of `RocketClient` that does the background 
  fetchFailRockets: RocketResult<RocketException> // Made for testing error handling
 ```
 
-`RocketKMM` is basically `DTO` model for rocket api - https://api.spacexdata.com/v4/rockets/
+`RocketKMM` is basically `DTO` model for rocket api - `https://api.spacexdata.com/v4/rockets/`
+  more in [SpaceX API](https://docs.spacexdata.com)
 
 `RocketResult` is custom result type (Success and Failure) used because Swift cannot handle build in Result type and casts it as a `Any?`.
 
 ## NativeCoroutines
- - All functions are using `@NativeCoroutines` modifier that is from special library:
-https://github.com/rickclephas/KMP-NativeCoroutines.git
+ - All functions are using `@NativeCoroutines` modifier that is from special library: [KMP-Native-Coroutines](https://github.com/rickclephas/KMP-NativeCoroutines.git)
  - This basically creates "new" functions, that are thread-safe. Those functions are called differently.
 
 ## How to use it in Swift
