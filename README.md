@@ -8,8 +8,6 @@ https://github.com/Qase/mobile-assignment
 KMM is used in both iOS (Swift) and Android (Kotlin) versions of mobile development, its new a inovative way of creating shared code for apps.
 In this case this is shared use case of `RocketClient` that does the background work of creating api request, serializing (parsing) data from `json` to struct/class and then sending
  it into our platform-specific project. 
- 
-_Implementation coming soon_
 
 ## API requests: 
 ```Kotlin 
